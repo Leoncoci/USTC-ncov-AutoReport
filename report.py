@@ -42,20 +42,29 @@ class Report(object):
 
         headers = {
             'authority': 'weixine.ustc.edu.cn',
-            'origin': 'http://weixine.ustc.edu.cn',
-            'upgrade-insecure-requests': '1',
-            'content-type': 'application/x-www-form-urlencoded',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36',
+            'path': '/2020/daliy_report',
+            'scheme': 'https',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'referer': 'http://weixine.ustc.edu.cn/2020/',
-            'accept-language': 'zh-CN,zh;q=0.9',
-            'Connection': 'close',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'h-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+            'cache-control': 'max-age=0',
+            'content-length': '326',
+            'content-type': 'application/x-www-form-urlencoded',
             'cookie': 'PHPSESSID=' + cookies.get("PHPSESSID") + ";XSRF-TOKEN=" + cookies.get("XSRF-TOKEN") + ";laravel_session="+cookies.get("laravel_session"),
+            'origin': 'https://weixine.ustc.edu.cn',
+            'referer': 'https://weixine.ustc.edu.cn/2020/',
+            'sec-fetch-dest': 'document',
+            'sec-fetch-mode': 'navigate',
+            'sec-fetch-site': 'same-origin',
+            'sec-fetch-user': '?1',
+            'upgrade-insecure-requests': '1',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.81',
+            'Connection': 'close',
         }
 
-        url = "http://weixine.ustc.edu.cn/2020/daliy_report"
+        url = "https://weixine.ustc.edu.cn/2020/daliy_report"
         session.post(url, data=data, headers=headers)
-        data = session.get("http://weixine.ustc.edu.cn/2020").text
+        data = session.get("https://weixine.ustc.edu.cn/2020").text
         soup = BeautifulSoup(data, 'html.parser')
         pattern = re.compile("2020-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
         token = soup.find(
@@ -78,10 +87,10 @@ class Report(object):
         return flag
 
     def login(self):
-        url = "https://passport.ustc.edu.cn/login?service=http%3A%2F%2Fweixine.ustc.edu.cn%2F2020%2Fcaslogin"
+        url = "https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fweixine.ustc.edu.cn%2F2020%2Fcaslogin"
         data = {
             'model': 'uplogin.jsp',
-            'service': 'http://weixine.ustc.edu.cn/2020/caslogin',
+            'service': 'https://weixine.ustc.edu.cn/2020/caslogin',
             'warn': '',
             'showCode': '',
             'username': self.stuid,
