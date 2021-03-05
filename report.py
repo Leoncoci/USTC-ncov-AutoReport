@@ -79,8 +79,7 @@ class Report(object):
             timenow = datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
             delta = timenow - reporttime
             print("{} second(s) before.".format(delta.seconds))
-            if delta.seconds < 1200:
-                flag = True
+            flag = True
         if flag == False:
             print("Report FAILED!")
         else:
