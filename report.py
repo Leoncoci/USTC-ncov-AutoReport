@@ -82,6 +82,8 @@ class Report(object):
         data = {
             'model': 'uplogin.jsp',
             'service': 'http://weixine.ustc.edu.cn/2020/caslogin',
+            'warn': '',
+            'showCode': '',
             'username': self.stuid,
             'password': str(self.password),
         }
