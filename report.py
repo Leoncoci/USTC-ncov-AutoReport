@@ -15,6 +15,7 @@ class Report(object):
         self.password = password
         self.data_path = data_path
 
+        
     def report(self):
         loginsuccess = False
         retrycount = 5
