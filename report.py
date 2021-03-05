@@ -14,7 +14,7 @@ class Report(object):
         self.stuid = stuid
         self.password = password
         self.data_path = data_path
-
+ 
         
     def report(self):
         loginsuccess = False
